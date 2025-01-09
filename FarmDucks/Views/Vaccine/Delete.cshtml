@@ -1,0 +1,16 @@
+﻿@model FarmDucks.Models.Vaccine
+
+@{
+    ViewData["Title"] = "تأكيد الحذف";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="alert alert-danger" role="alert">
+    هل أنت متأكد من أنك تريد حذف اللقاح "<strong>@Model.Name</strong>"؟
+</div>
+
+<form method="post">
+    <button type="submit" class="btn btn-danger">نعم، حذف</button>
+    <a href="@Url.Action("Index")" class="btn btn-secondary">إلغاء</a>
+</form>

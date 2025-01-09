@@ -1,0 +1,15 @@
+﻿@model FarmDucks.Models.Farm
+
+@{
+    ViewData["Title"] = "Farm Details";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <h3>@Model.Name</h3>
+    <p><strong>Location:</strong> @Model.Location</p>
+    <p><strong>Notes:</strong> @Model.Notes</p>
+</div>
+
+<a href="@Url.Action("Index", "Farm")" class="btn btn-secondary">Back to List</a>

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<FarmDucks.Models.Cycle>
+
+@{
+    ViewData["Title"] = "Cycles List";
+}
+
+<h1>Cycles</h1>
+
+<p>
+    <a href="@Url.Action("Create", "Cycle")" class="btn btn-primary">Create New Cycle</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Birth Date</th>
+            <th>Farm</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cycle in Model)
+        {
+            <tr>
+                <td>@cycle.Name</td>
+                <td>@cycle.BirthDate</td>
+                <td>@cycle.Farm.Name</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Cycle", new { id = cycle.Id })" class="btn btn-warning">Edit</a>
+                    <a href="@Url.Action("Delete", "Cycle", new { id = cycle.Id })" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

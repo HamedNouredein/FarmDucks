@@ -1,0 +1,18 @@
+﻿@model FarmDucks.Models.Farm
+
+@{
+    ViewData["Title"] = "Delete Farm";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <h3>Are you sure you want to delete the farm @Model.Name?</h3>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="id" value="@Model.Id" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="@Url.Action("Index", "Farm")" class="btn btn-secondary">Cancel</a>
+</form>

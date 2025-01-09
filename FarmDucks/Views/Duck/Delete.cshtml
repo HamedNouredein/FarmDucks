@@ -1,0 +1,22 @@
+﻿@model FarmDucks.Models.Duck
+
+@{
+    ViewData["Title"] = "Delete Duck";
+}
+
+<h1>Delete Duck</h1>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Are you sure you want to delete the duck named @Model.Name?</h5>
+        <p class="card-text">Weight: @Model.Weight kg</p>
+        <p class="card-text">Cycle: @Model.Cycle.Name</p>
+        <p class="card-text">Notes: @Model.Notes</p>
+    </div>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="@Url.Action("Index")" class="btn btn-secondary">Cancel</a>
+</form>

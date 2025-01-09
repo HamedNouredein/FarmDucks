@@ -1,0 +1,15 @@
+﻿@model FarmDucks.Models.Vaccine
+
+@{
+    ViewData["Title"] = "تفاصيل اللقاح";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <h3>@Model.Name</h3>
+    <p>@Model.Description</p>
+
+    <a href="@Url.Action("Edit", new { id = Model.Id })" class="btn btn-warning">تعديل</a>
+    <a href="@Url.Action("Index")" class="btn btn-secondary">عودة للقائمة</a>
+</div>

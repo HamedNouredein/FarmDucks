@@ -1,0 +1,36 @@
+﻿@model FarmDucks.ViewModels.DuckViewModel
+
+@{
+    ViewData["Title"] = "Edit Duck";
+}
+
+<h1>Edit Duck</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" name="Duck.Id" value="@Model.Duck.Id" />
+
+    <div class="form-group">
+        <label for="Name">Name</label>
+        <input type="text" class="form-control" id="Name" name="Duck.Name" value="@Model.Duck.Name" required />
+    </div>
+
+    <div class="form-group">
+        <label for="Weight">Weight</label>
+        <input type="number" class="form-control" id="Weight" name="Duck.Weight" value="@Model.Duck.Weight" required />
+    </div>
+
+  
+    <div class="form-group">
+        <label for="CycleId">Cycle</label>
+        <select class="form-control" id="CycleId" name="Duck.CycleId" asp-for="Duck.CycleId" asp-items="@(new SelectList(Model.Cycles, "Id", "Name"))">
+            <option value="">Select a Cycle</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="Notes">Notes</label>
+        <textarea class="form-control" id="Notes" name="Duck.Notes">@Model.Duck.Notes</textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<FarmDucks.Models.Farm>
+
+@{
+    ViewData["Title"] = "Farms";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a href="@Url.Action("Create", "Farm")" class="btn btn-primary">Add New Farm</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var farm in Model)
+        {
+            <tr>
+                <td>@farm.Name</td>
+                <td>@farm.Location</td>
+                <td>
+                    <a href="@Url.Action("Details", "Farm", new { id = farm.Id })" class="btn btn-info">Details</a>
+                    <a href="@Url.Action("Edit", "Farm", new { id = farm.Id })" class="btn btn-warning">Edit</a>
+                    <a href="@Url.Action("Delete", "Farm", new { id = farm.Id })" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

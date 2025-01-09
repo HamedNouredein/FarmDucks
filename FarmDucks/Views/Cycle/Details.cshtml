@@ -1,0 +1,22 @@
+﻿@model FarmDucks.Models.Cycle
+
+@{
+    ViewData["Title"] = "Cycle Details";
+}
+
+<h1>Cycle Details</h1>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Name</h5>
+        <p class="card-text"><strong>Birth Date:</strong> @Model.BirthDate.ToString()</p>
+        <p class="card-text"><strong>Notes:</strong> @Model.Notes</p>
+
+        <div class="form-group">
+            <label><strong>Farm:</strong></label>
+            <p>@Model.Farm.Name</p> 
+        </div>
+
+        <a href="@Url.Action("Index", "Cycle")" class="btn btn-primary">Back to List</a>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+﻿@model FarmDucks.ViewModels.VaccineViewModel
+
+@{
+    ViewData["Title"] = "تعديل اللقاح";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label for="Name">اسم اللقاح</label>
+        <input type="text" class="form-control" id="Name" name="Vaccine.Name" value="@Model.Vaccine.Name" />
+    </div>
+    <div class="form-group">
+        <label for="Description">وصف اللقاح</label>
+        <textarea class="form-control" id="Description" name="Vaccine.Description">@Model.Vaccine.Description</textarea>
+    </div>
+    <div class="form-group">
+        <label for="ExpirationDate">تاريخ انتهاء اللقاح</label>
+        <input type="date" class="form-control" id="ExpirationDate" name="Vaccine.ExpirationDate" value="@Model.Vaccine.ExpirationDate.ToString("yyyy-MM-dd")" />
+    </div>
+    <div class="form-group">
+        <label for="Notes">ملاحظات</label>
+        <textarea class="form-control" id="Notes" name="Vaccine.Notes">@Model.Vaccine.Notes</textarea>
+    </div>
+
+    <!-- Dropdown list for Cycles -->
+    <div class="form-group">
+        <label for="CycleId">الدورة</label>
+        <select class="form-control" id="CycleId" name="Vaccine.CycleId" asp-items="@(new SelectList(Model.Cycles, "Id", "Name"))">
+            <option value="">اختر دورة</option>
+        </select>
+    </div>
+
+    <!-- Checkbox for IsTaken -->
+    <div class="form-group">
+        <label for="IsTaken">هل تم أخذ اللقاح؟</label>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="IsTaken" name="Vaccine.IsTaken" @(Model.Vaccine.IsTaken ? "checked" : "") />
+            <label class="form-check-label" for="IsTaken">
+                <i class="fa @(Model.Vaccine.IsTaken ? "fa-check" : "")"></i>
+            </label>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">تعديل</button>
+    <a href="@Url.Action("Index")" class="btn btn-secondary">إلغاء</a>
+</form>
+
+<!-- Include FontAwesome if not already included -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">

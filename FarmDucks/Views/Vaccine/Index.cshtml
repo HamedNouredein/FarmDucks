@@ -1,0 +1,39 @@
+﻿@model IEnumerable<FarmDucks.Models.Vaccine>
+
+@{
+    ViewData["Title"] = "قائمة اللقاحات";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a href="@Url.Action("Create")" class="btn btn-primary">إضافة لقاح جديد</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>اسم اللقاح</th>
+            <th>التفاصيل</th>
+            <th>التعديل</th>
+            <th>الحذف</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var vaccine in Model)
+        {
+            <tr>
+                <td>@vaccine.Name</td>
+                <td>
+                    <a href="@Url.Action("Details", new { id = vaccine.Id })" class="btn btn-info">عرض</a>
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = vaccine.Id })" class="btn btn-warning">تعديل</a>
+                </td>
+                <td>
+                    <a href="@Url.Action("Delete", new { id = vaccine.Id })" class="btn btn-danger">حذف</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
